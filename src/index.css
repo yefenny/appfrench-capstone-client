@@ -1,17 +1,378 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+/*
+The CSS code gets to executed from top to bottom and left ro right
+
+Basic rules to write CSS
+- write GENERAL rules first (for all the paragraph tags in the website for example) and only after that write CSS for SPECIFIC tags (for example the paragraph tags inside the footer)
+- write the css styles to define for the parent (outside) container and THEN the children (inside containers) of that parent and THEN the children (inside containers) of the child above
+*/
+
+/* -------------------------------------
+CSS reset
+Is a short set of CSS rules that resets the styling of all HTML elements to a consistent baseline so the website will look the same on all browsers
+*/
 
 * {
-  box-sizing: border-box;
-}
-
-body {
   margin: 0;
   padding: 0;
-  font-family: "Ubuntu", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  border: 0;
+  font-size: 100%;
+  /*The box-sizing property is used to tell the browser what the sizing properties (width and height) should include border-box.*/
+  box-sizing: border-box;
+  /*reset Chrome user agent styles*/
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-before: 0px;
+  -webkit-padding-after: 0px;
+  -webkit-padding-start: 0px;
+  -webkit-padding-end: 0px;
+  /*reset Firefox user agent styles*/
+  -moz-margin-before: 0px;
+  -moz-margin-after: 0px;
+  -moz-margin-start: 0px;
+  -moz-margin-end: 0px;
+  -moz-padding-before: 0px;
+  -moz-padding-after: 0px;
+  -moz-padding-start: 0px;
+  -moz-padding-end: 0px;
+  /*reset Internet Explorer user agent styles*/
+  -ms-margin-before: 0px;
+  -ms-margin-after: 0px;
+  -ms-margin-start: 0px;
+  -ms-margin-end: 0px;
+  -ms-padding-before: 0px;
+  -ms-padding-after: 0px;
+  -ms-padding-start: 0px;
+  -ms-padding-end: 0px;
+  /*reset Opera user agent styles*/
+  -o-margin-before: 0px;
+  -o-margin-after: 0px;
+  -o-margin-start: 0px;
+  -o-margin-end: 0px;
+  -o-padding-before: 0px;
+  -o-padding-after: 0px;
+  -o-padding-start: 0px;
+  -o-padding-end: 0px;
 }
 
-:root {
-  --font-size: calc(10px + 1vmin);
+/* -------------------------------------
+General styles (General Module, wrapping around the modules below)
+(the styles used everywhere in the page (like the Body) or styles which are used in more than 2 of the modules below (h2, h3, h4, h5, h6, p, a, ul, li))
+*/
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  background-color: #fefcfb;
+  text-align: center;
+  line-height: 1.5;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+a:hover {
+  color: #c0c0c0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #013a63;
+  margin: 10px;
+}
+
+input,
+select,
+button {
+  border: 1px solid #0e4eb4;
+  padding: 10px 25px;
+  margin: 5px;
+  border-radius: 15px;
+  color: #e1e5f2;
+}
+
+button {
+  background-color: transparent;
+  border: 2px solid #6d7296;
+}
+
+button:hover {
+  background-color: #efc43f;
+  color: black;
+}
+
+button[type='submit'] {
+  background-color: transparent;
+  border: 2px solid #e1e5f2;
+}
+
+button[type='submit']:hover {
+  color: #ffffff;
+}
+
+label {
+  display: block;
+  margin: 10px;
+}
+
+/*
+The clearfix Hack: If an element is taller than the element containing it, and it is floated, it will "overflow" outside of its container
+https://www.w3schools.com/css/css_float_clear.asp
+*/
+.clearfix::after {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+/* -------------------------------------
+Header styles (Main Module)
+(all the styles inside the < header > or < nav > tags)
+*/
+header {
+  display: flex;
+  margin-top: 0;
+  padding: 10px;
+  justify-content: space-between;
+  background: #013a63;
+}
+
+header a {
+  color: #fff;
+  margin: 0px 10px;
+}
+
+header h1 {
+  margin-left: 5px;
+}
+
+header nav {
+}
+header nav ul.nav-items,
+header nav div.logo {
+  display: inline-block;
+  width: auto;
+}
+
+/* -------------------------------------
+Content styles (Main Module)
+(all the styles inside the < sections > or < aside > tags)
+*/
+section {
+  padding: 30px;
+}
+
+section div.word-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #222222;
+  margin: 15px;
+}
+
+section div.learning-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #222222;
+  margin: 15px;
+}
+
+section.public-section p {
+  margin: 10px;
+  color: #012a4a;
+  font-style: italic;
+}
+section.public-section h2 {
+  margin: 10px;
+  color: #012a4a;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+section.public-section form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 4%;
+  background-color: #013a63;
+  border-radius: 15px;
+  color: #fefcfb;
+}
+
+section.public-section footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  padding: 10px 50px;
+}
+
+section div.word-container h3 {
+  color: #034078;
+}
+
+section.public-section form input {
+  width: 60%;
+  color: black;
+}
+
+section div.dashboard-container button {
+  align-self: center;
+  font-size: 16px;
+  margin: 15px;
+  border-radius: 20px;
+  font-style: italic;
+  color: #034078;
+}
+
+section div.dashboard-container h3 {
+  align-self: center;
+  font-size: 25px;
+  margin: 15px;
+  border-radius: 20px;
+  font-style: italic;
+  color: #034078;
+}
+
+section div.learning-container form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 4%;
+  background-color: #013a63;
+  border-radius: 15px;
+  color: #fefcfb;
+}
+
+section.public-section form button {
+  align-self: center;
+  width: 150px;
+  margin: 15px;
+  background-color: #012a4a;
+}
+
+section.public-section footer button {
+  align-self: center;
+  width: 150px;
+  margin-top: 10px;
+}
+
+section div.dashboard-container button:hover {
+  font-size: 16px;
+  border-radius: 20px;
+  font-style: italic;
+  background: #034078;
+  color: #fff;
+}
+
+section div.dashboard-container ul li {
+  list-style: none;
+}
+
+section div.learning-container form button {
+  align-self: center;
+
+  margin: 15px;
+  background-color: #012a4a;
+}
+
+section div.learning-container span.next-word {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+section div.learning-container div.answer-count {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #222222;
+  margin: 15px;
+}
+
+section div.dashboard-container span.total-score {
+  font-weight: 600;
+  font-size: 24px;
+  color: #034078;
+}
+
+section.public-section footer a:hover {
+  color: #bfdbf7;
+}
+section.public-section form div[role='alert'] p {
+  color: red;
+}
+/* -------------------------------------
+Footer styles (Main Module)
+(all the styles inside the < footer > tag)
+*/
+
+footer {
+}
+
+footer a {
+}
+
+footer a:hover {
+  color: #081e6f;
+}
+
+/* -------------------------------------
+place all the desktop styles above this line
+
+Responsive styles
+(the very last module in the CSS, contains all the media queries and it is dealing with the compatibility with mobiles and tablets)
+
+place all the mobile tables styles below this line
+*/
+
+/* mobile first approach = (the website was built initialy for mobiles and it will be adapted for desktop)
+This is the ideal way to built websites because it is much easier to adapt from a small screen and low computing power (mobiles) to a large screen and high computing power (desktops)
+*/
+
+/*Android landscape*/
+@media only screen and (min-width: 640px) {
+  section {
+    padding: 2% 10%;
+  }
+}
+
+/*iPad potrait*/
+@media only screen and (min-width: 768px) {
+  section {
+    padding: 2% 15%;
+  }
+}
+
+/*large desktop*/
+@media only screen and (min-width: 1600px) {
+  section {
+    padding: 5% 25%;
+  }
+}
+
+/*very large desktop*/
+@media only screen and (min-width: 2100px) {
+  section {
+    padding: 5% 30%;
+  }
 }
