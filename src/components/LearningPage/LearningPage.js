@@ -64,6 +64,15 @@ class LearningPage extends Component {
       });
   };
 
+  handleNextWord = async () => {
+    await this.setState({
+      answered: false,
+      currentWord: this.state.response,
+      response: {},
+      guess: ''
+    });
+  };
+
   renderFeedback = () => {
     const { response, guess, currentWord } = this.state;
     let text;
@@ -75,11 +84,25 @@ class LearningPage extends Component {
         <div className='DisplayFeedback'>
           {' '}
           <p>
-            The correct translation for {currentWord.nextWord} was{' '}
-            {response.answer} and you chose {guess}!
+            The correct translation for{' '}
+            <span lang='fr'>{currentWord.nextWord} </span>was {response.answer}{' '}
+            and you chose {guess}!
           </p>
         </div>
-        <button>Try another word!</button>
+        <button onClick={this.handleNextWord}>Try another word!</button>
+        <div className='DisplayNextWord'>
+          <h3>
+            Next word: <span lang='fr'>{response.nextWord}</span>
+          </h3>
+          <span>
+            You have answered this word correctly {response.wordCorrectCount}{' '}
+            times.
+          </span>
+          <span>
+            You have answered this word incorrectly{' '}
+            {response.wordIncorrectCount} times.
+          </span>
+        </div>
         <div className='DisplayScore'>
           {' '}
           <p>Your total score is: {response.totalScore}</p>
@@ -93,7 +116,9 @@ class LearningPage extends Component {
     return (
       <div className='learning-container'>
         <h2>Translate the word:</h2>
-        <span className='next-word'>{currentWord.nextWord}</span>
+        <span className='next-word' lang='fr'>
+          {currentWord.nextWord}
+        </span>
 
         <form
           onSubmit={(e) => {

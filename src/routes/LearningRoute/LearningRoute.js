@@ -5,7 +5,7 @@ class LearningRoute extends Component {
   render() {
     return (
       <section>
-        <LearningPage />
+        <LearningPage history={this.props.history} />
       </section>
     );
   }

@@ -286,6 +286,10 @@ section div.feedback-container button:hover {
   color: #fff;
 }
 
+section div.feedback-container div.DisplayNextWord {
+  display: flex;
+  flex-direction: column;
+}
 section div.dashboard-container ul li {
   list-style: none;
 }
@@ -336,6 +340,13 @@ section div.feedback-container div.DisplayScore p {
   margin-top: 15px;
   font-size: 22px;
   font-weight: 700;
+}
+section div.feedback-container div.DisplayNextWord h3 {
+  align-self: center;
+  font-size: 23px;
+  margin: 15px;
+  border-radius: 20px;
+  color: #034078;
 }
 /* -------------------------------------
 Footer styles (Main Module)

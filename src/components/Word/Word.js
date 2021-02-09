@@ -9,7 +9,7 @@ class Word extends Component {
     const { original, correct_count, incorrect_count } = this.props.word;
     return (
       <div className='word-container'>
-        <h4>{FormatService.firstUpperCaser(original)}</h4>
+        <h4 lang='fr'>{FormatService.firstUpperCaser(original)}</h4>
         <span>Correct answer count: {correct_count}</span>
         <span>Incorrect answer count: {incorrect_count}</span>
       </div>
