@@ -8,7 +8,13 @@ class LearningPage extends Component {
   };
   static contextType = UserContext;
 
-  state = { currentWord: {}, error: null };
+  state = {
+    currentWord: {},
+    error: null,
+    answered: false,
+    guess: '',
+    response: {}
+  };
 
   componentDidMount = () => {
     LanguageService.getWord()
@@ -24,14 +30,79 @@ class LearningPage extends Component {
       });
   };
 
-  render() {
-    const { currentWord } = this.state;
+  handleChange = (e) => {
+    this.setState({
+      guess: e.target.value
+    });
+  };
+  handleSubmit = async (e) => {
+    const { guess } = this.state;
+    e.preventDefault();
+    if (guess.trim() === '') {
+      this.setState({
+        error: 'Insert your translation',
+        guess: ''
+      });
+      return;
+    }
+    this.setState({
+      error: null
+    });
+    await LanguageService.postGuess({ guess })
+      .then(async (response) => {
+        if (response) {
+          await this.setState({
+            answered: true,
+            response
+          });
+        }
+      })
+      .catch((error) => {
+        this.setState({
+          error: error.error
+        });
+      });
+  };
 
+  renderFeedback = () => {
+    const { response, guess, currentWord } = this.state;
+    let text;
+    if (response.isCorrect) text = 'You were correct! :D';
+    else text = 'Good try, but not quite right :(';
+    return (
+      <div className='feedback-container'>
+        <h2>{text}</h2>
+        <div className='DisplayFeedback'>
+          {' '}
+          <p>
+            The correct translation for {currentWord.nextWord} was{' '}
+            {response.answer} and you chose {guess}!
+          </p>
+        </div>
+        <button>Try another word!</button>
+        <div className='DisplayScore'>
+          {' '}
+          <p>Your total score is: {response.totalScore}</p>
+        </div>
+      </div>
+    );
+  };
+
+  learnRender = () => {
+    const { currentWord, guess, error } = this.state;
     return (
       <div className='learning-container'>
         <h2>Translate the word:</h2>
         <span className='next-word'>{currentWord.nextWord}</span>
-        <form action=''>
+
+        <form
+          onSubmit={(e) => {
+            this.handleSubmit(e);
+          }}
+        >
+          <div className='error'>
+            <span>{error && error}</span>
+          </div>
           <label htmlFor='learn-guess-input'>
             What's the translation for this word?
           </label>
@@ -40,6 +111,10 @@ class LearningPage extends Component {
             id='learn-guess-input'
             name='learn-guess-input'
             required
+            value={guess}
+            onChange={(e) => {
+              this.handleChange(e);
+            }}
           />
           <button type='submit'>Submit your answer</button>
         </form>
@@ -56,6 +131,12 @@ class LearningPage extends Component {
         <p>Your total score is: {currentWord.totalScore}</p>
       </div>
     );
+  };
+
+  render() {
+    const { currentWord, answered } = this.state;
+    const content = answered ? this.renderFeedback() : this.learnRender();
+    return content;
   }
 }
 

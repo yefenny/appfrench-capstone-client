@@ -103,12 +103,13 @@ button {
   padding: 10px 25px;
   margin: 5px;
   border-radius: 15px;
-  color: #e1e5f2;
+  color: #000000;
 }
 
 button {
   background-color: transparent;
   border: 2px solid #6d7296;
+  color: #e1e5f2;
 }
 
 button:hover {
@@ -234,9 +235,10 @@ section.public-section form input {
   color: black;
 }
 
-section div.dashboard-container button {
+section div.dashboard-container button,
+section div.feedback-container button {
   align-self: center;
-  font-size: 16px;
+  font-size: 20px;
   margin: 15px;
   border-radius: 20px;
   font-style: italic;
@@ -275,8 +277,9 @@ section.public-section footer button {
   margin-top: 10px;
 }
 
-section div.dashboard-container button:hover {
-  font-size: 16px;
+section div.dashboard-container button:hover,
+section div.feedback-container button:hover {
+  font-size: 20px;
   border-radius: 20px;
   font-style: italic;
   background: #034078;
@@ -289,7 +292,6 @@ section div.dashboard-container ul li {
 
 section div.learning-container form button {
   align-self: center;
-
   margin: 15px;
   background-color: #012a4a;
 }
@@ -309,6 +311,10 @@ section div.learning-container div.answer-count {
   margin: 15px;
 }
 
+section div.learning-container div.error {
+  color: red;
+}
+
 section div.dashboard-container span.total-score {
   font-weight: 600;
   font-size: 24px;
@@ -320,6 +326,16 @@ section.public-section footer a:hover {
 }
 section.public-section form div[role='alert'] p {
   color: red;
+}
+section div.feedback-container div.DisplayScore p {
+  margin-top: 15px;
+  font-size: 22px;
+  font-weight: 700;
+}
+section div.feedback-container div.DisplayScore p {
+  margin-top: 15px;
+  font-size: 22px;
+  font-weight: 700;
 }
 /* -------------------------------------
 Footer styles (Main Module)
