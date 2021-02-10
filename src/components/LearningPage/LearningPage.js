@@ -159,7 +159,7 @@ class LearningPage extends Component {
   };
 
   render() {
-    const { currentWord, answered } = this.state;
+    const { answered } = this.state;
     const content = answered ? this.renderFeedback() : this.learnRender();
     return content;
   }
