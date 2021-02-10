@@ -2,9 +2,9 @@
 
 Appfrench is an app that use the space-repetition technique to help you learn new words in french.
 
-### 1. Working Prototype (to do later)
+### 1. Working Prototype
 
-(Example) You can access a working prototype of the React app here: https://your-app-client.herokuapp.com/ and Node app here: https://your-app-server.herokuapp.com/
+You can access a working prototype of the React app here: https://appfrench-client.yefenny.vercel.app/ and Node app here: https://hidden-reaches-87284.herokuapp.com/
 
 ### 2. User Stories
 
@@ -118,7 +118,7 @@ Learning Page: Correct Answer
   - user_id (integer)
   - head (integer)
 
-### 8. API Documentation (to do later)
+### 8. API Documentation
 
 API Documentation details:
 
